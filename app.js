@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express=require('express');
 const app=express();
+const cors=require("cors");
 const PORT=process.env.PORT || 2000;
 const MasterRoutes=require('./routes/masterRoute');
 const AuthRoutes=require('./routes/authenticationRoute');
@@ -8,7 +9,7 @@ const sequelize=require('./db/connectDB');
 const verifyToken=require("./middlewares/authMiddileware");
 const role=require("./middlewares/roleMiddleware");
 
-
+app.use(cors());
 app.use(express.json());
 
 /// User Authentication Routes
